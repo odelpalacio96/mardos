@@ -70,3 +70,23 @@ body {
     transition: opacity 300ms ease;
   }
 }
+
+/* Material flotante decorativo (inicio) */
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite alternate;
+}
+
+@keyframes float-soft {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-soft {
+    animation: none;
+  }
+}

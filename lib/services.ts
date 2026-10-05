@@ -1,3 +1,5 @@
+import { drossPhotos, type ShowcaseImage } from "./showcase";
+
 export type Faq = { q: string; a: string };
 
 export type PageVideo = { src: string; poster: string; caption: string };
@@ -19,6 +21,7 @@ export type ServiceDetail = {
   benefits: string[];
   faqs: Faq[];
   video?: PageVideo;
+  gallery?: { title: string; images: ShowcaseImage[] };
 };
 
 export const serviceDetails: ServiceDetail[] = [
@@ -175,6 +178,7 @@ export const serviceDetails: ServiceDetail[] = [
       caption:
         "Ensamble y soldadura de componentes electrónicos: de este proceso provienen las escorias que reciclamos. Imagen ilustrativa.",
     },
+    gallery: { title: "Escoria de soldadura que recolectamos", images: drossPhotos },
     intro:
       "Damos disposición final segura y trazable a las escorias de soldadura libres de plomo generadas por tu operación, con el manejo y la documentación que tu cumplimiento ambiental requiere. Para las escorias de soldadura con plomo, consideradas residuos peligrosos, te ayudamos con la gestión para su disposición final y su reciclaje.",
     includes: [

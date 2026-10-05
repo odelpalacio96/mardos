@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -93,6 +94,25 @@ export default async function ServicioPage({
           {s.video && <ProcessVideo {...s.video} />}
         </div>
       </section>
+
+      {s.gallery && (
+        <section className="mx-auto max-w-6xl px-5 pt-14">
+          <h2 className="text-2xl font-bold text-ink">{s.gallery.title}</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {s.gallery.images.map((img) => (
+              <div key={img.src} className="relative aspect-square overflow-hidden rounded-2xl border border-line">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-4xl px-5 py-14">
         <div className="grid gap-12 md:grid-cols-2">

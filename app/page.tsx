@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { site, services, materials } from "@/lib/site";
+import { componentReel, solderBar, solderWire } from "@/lib/showcase";
 import CTABand from "./components/CTABand";
 import HeroCarousel from "./components/hero/HeroCarousel";
 
@@ -177,28 +179,44 @@ export default function Home() {
       </section>
 
       {/* MATERIALES */}
-      <section className="bg-navy-dark">
-        <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
-          <h2 className="text-3xl font-bold text-white">Materiales que compramos</h2>
-          <p className="mt-2 text-white/70">
-            Y, en general, todos los residuos industriales de tu empresa.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {materials.map((m) => (
-              <span
-                key={m}
-                className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white"
-              >
-                {m}
-              </span>
-            ))}
+      <section className="overflow-hidden bg-navy-dark">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[1.25fr_1fr] md:py-20">
+          <div>
+            <h2 className="text-3xl font-bold text-white">Materiales que compramos</h2>
+            <p className="mt-2 text-white/70">
+              Y, en general, todos los residuos industriales de tu empresa.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {materials.map((m) => (
+                <span
+                  key={m}
+                  className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white"
+                >
+                  {m}
+                </span>
+              ))}
+            </div>
+            <Link
+              href="/materiales"
+              className="mt-8 inline-block font-semibold text-brand-light hover:text-white"
+            >
+              Ver materiales y precios →
+            </Link>
           </div>
-          <Link
-            href="/materiales"
-            className="mt-8 inline-block font-semibold text-brand-light hover:text-white"
-          >
-            Ver materiales y precios →
-          </Link>
+
+          {/* Material real flotando (decorativo) */}
+          <div className="relative hidden h-[340px] md:block" aria-hidden="true">
+            <div className="absolute inset-[8%] rounded-full bg-[radial-gradient(closest-side,rgba(111,191,79,0.18),transparent)]" />
+            <div className="float-soft absolute left-[24%] top-[2%] w-[54%]">
+              <Image src={componentReel.src} alt="" width={componentReel.width} height={componentReel.height} sizes="260px" className="drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]" />
+            </div>
+            <div className="float-soft absolute right-[2%] top-[2%] h-[86%] [animation-delay:-2.4s]">
+              <Image src={solderBar.src} alt="" width={solderBar.width} height={solderBar.height} sizes="100px" className="h-full w-auto rotate-[10deg] drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]" />
+            </div>
+            <div className="float-soft absolute -bottom-[2%] left-0 w-[30%] [animation-delay:-4.8s]">
+              <Image src={solderWire.src} alt="" width={solderWire.width} height={solderWire.height} sizes="160px" className="drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]" />
+            </div>
+          </div>
         </div>
       </section>
 

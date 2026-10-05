@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../components/Breadcrumbs";
 import CTABand from "../components/CTABand";
+import MaterialShowcase from "../components/MaterialShowcase";
 import { materialDetails } from "@/lib/materials";
 import { materials } from "@/lib/site";
+import { solderShowcase } from "@/lib/showcase";
 
 export const metadata: Metadata = {
   title: "Reciclaje de Metales en Ciudad Juárez",
@@ -55,6 +57,19 @@ export default function MaterialesPage() {
               </span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-surface">
+        <div className="mx-auto max-w-6xl px-5 py-16">
+          <h2 className="text-3xl font-bold text-ink">Soldadura y componentes</h2>
+          <p className="mt-3 max-w-2xl text-muted">
+            También compramos los materiales de soldadura y componentes que genera la
+            industria electrónica.
+          </p>
+          <div className="mt-8">
+            <MaterialShowcase items={solderShowcase} />
+          </div>
         </div>
       </section>
 
