@@ -5,7 +5,7 @@ import CTABand from "../components/CTABand";
 export const metadata: Metadata = {
   title: "Blog de Reciclaje Industrial",
   description:
-    "Guías y mejores prácticas sobre reciclaje industrial, manejo de scrap, cumplimiento ambiental e IMMEX para empresas en Cd. Juárez.",
+    "Guías y mejores prácticas sobre reciclaje industrial, manejo de scrap, cumplimiento ambiental y comercio exterior para empresas en Cd. Juárez.",
   alternates: { canonical: "/blog" },
 };
 
@@ -15,7 +15,7 @@ const upcoming = [
   { title: "Certificado de destrucción de documentos: qué es y por qué tu empresa lo necesita", cat: "Cumplimiento" },
   { title: "Disposición de residuos de manejo especial: obligaciones de la industria maquiladora", cat: "Cumplimiento" },
   { title: "Reciclaje de cobre y cable de cobre: cómo se valúa y se paga", cat: "Vender Material" },
-  { title: "IMMEX y reciclaje: qué hacer con el material importado temporalmente", cat: "Para Maquiladoras" },
+  { title: "Comercio exterior y reciclaje: qué hacer con el material importado temporalmente", cat: "Para Maquiladoras" },
   { title: "Escorias de soldadura libres de plomo: disposición final segura", cat: "Cumplimiento" },
   { title: "Aluminio, bronce, acero inoxidable: guía de metales reciclables y su valor", cat: "Guías" },
 ];
@@ -29,7 +29,7 @@ export default function BlogPage() {
           <h1 className="mt-4 text-4xl font-bold text-ink">Blog de reciclaje industrial</h1>
           <p className="mt-4 max-w-2xl text-lg text-muted">
             Guías y mejores prácticas sobre manejo de scrap, cumplimiento
-            ambiental, IMMEX y venta de material para la industria.
+            ambiental, comercio exterior y venta de material para la industria.
           </p>
         </div>
       </section>

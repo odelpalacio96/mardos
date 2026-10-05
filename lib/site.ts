@@ -26,7 +26,6 @@ export const nav = [
   { label: "Nosotros", href: "/nosotros" },
   { label: "Servicios", href: "/servicios" },
   { label: "Materiales", href: "/materiales" },
-  { label: "IMMEX", href: "/immex" },
   { label: "Blog", href: "/blog" },
   { label: "Contacto", href: "/contacto" },
 ] as const;
@@ -55,7 +54,12 @@ export const services = [
   {
     slug: "escorias-soldadura",
     title: "Escorias de soldadura libres de plomo",
-    short: "Disposición final segura de escorias de soldadura.",
+    short: "Disposición final de escorias libres de plomo y gestión de las que contienen plomo.",
+  },
+  {
+    slug: "comercio-exterior",
+    title: "Gestión en comercio exterior",
+    short: "Retorno de materiales importados temporalmente con filial en EE.UU.",
   },
 ] as const;
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { site, services, materials } from "@/lib/site";
 import CTABand from "./components/CTABand";
+import HeroCarousel from "./components/hero/HeroCarousel";
 
 export const metadata: Metadata = {
   title: "Recicladora en Ciudad Juárez | MARDOS Reciclados",
@@ -21,11 +22,7 @@ const pillars = [
   },
   {
     title: "Solución transfronteriza",
-    text: "Operaciones IMMEX y filial en Estados Unidos para el retorno de materiales importados temporalmente.",
-  },
-  {
-    title: "Decimos NO al mercado negro",
-    text: "Disposición segura, trazable y responsable. Tu material no termina donde no debe.",
+    text: "Gestión en comercio exterior con filial en Estados Unidos para el retorno de materiales importados temporalmente.",
   },
 ];
 
@@ -65,40 +62,15 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden bg-navy-dark">
         <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-brand-dark opacity-95" />
-        <div className="relative mx-auto max-w-6xl px-5 py-24 md:py-32">
-          <p className="text-sm font-semibold uppercase tracking-wide text-brand-light">
-            Recicladora industrial en Ciudad Juárez · +18 años
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-white md:text-5xl">
-            Tu scrap vale. Tu cumplimiento, también.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/85">
-            En MARDOS recolectamos, compramos y damos disposición certificada a
-            los materiales reciclables de tu empresa. Soluciones integrales para
-            la industria maquiladora y para quien quiere el mejor precio por su
-            material.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/cotizacion"
-              className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-light"
-            >
-              Cotiza tu recolección
-            </Link>
-            <Link
-              href="/materiales"
-              className="rounded-lg border border-white/40 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
-            >
-              Vende tu material
-            </Link>
-          </div>
+        <div className="relative mx-auto max-w-6xl px-5 pb-10 pt-14 md:pb-12 md:pt-16">
+          <HeroCarousel />
         </div>
         {/* Tira de confianza */}
         <div className="relative border-t border-white/10 bg-black/20">
           <div className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-2 px-5 py-4 text-sm text-white/80">
             {[
               "+18 años de experiencia",
-              "Operaciones IMMEX",
+              "Gestión en comercio exterior",
               "Filial en EE.UU.",
               "Certificado de destrucción",
               "Confirmación de pesos en 24h",
@@ -163,7 +135,7 @@ export default function Home() {
           <h2 className="text-center text-3xl font-bold text-ink">
             Qué nos hace diferentes
           </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {pillars.map((p) => (
               <div
                 key={p.title}
@@ -252,7 +224,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-16 text-center sm:grid-cols-3">
           {[
             { big: "+18", small: "años de experiencia" },
-            { big: "IMMEX", small: "operaciones de comercio exterior" },
+            { big: "Operaciones", small: "de comercio exterior" },
             { big: "EE.UU.", small: "filial para soluciones transfronterizas" },
           ].map((n) => (
             <div key={n.small}>

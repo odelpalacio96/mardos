@@ -20,22 +20,22 @@ export const serviceDetails: ServiceDetail[] = [
     keyword: "recolección de scrap industrial maquila",
     metaTitle: "Recolección de Scrap Industrial en Cd. Juárez | MARDOS",
     metaDescription:
-      "Recolección de scrap productivo, secundario y de embalaje para maquiladoras en Ciudad Juárez. Contenedores, transporte y pesos en 24h. Cotiza.",
+      "Recolección de scrap productivo, secundario y de embalaje para maquiladoras en Ciudad Juárez. Contenedores, transporte propio y documentación. Cotiza.",
     h1: "Recolección de scrap industrial para tu maquila",
     intro:
-      "Gestionamos la recolección de tu scrap productivo, secundario y de embalaje directamente en tu planta, con contenedores y transporte propio, confirmación de pesos en 24 horas y la documentación que tus auditorías y operación IMMEX requieren.",
+      "Gestionamos la recolección de tu scrap productivo, secundario y de embalaje directamente en tu planta, con contenedores y transporte propio, y con la documentación que tus auditorías requieren.",
     includes: [
       "Recolección de scrap productivo, secundario y de embalaje.",
       "Suministro de contenedores adecuados a tu volumen.",
       "Transporte propio y recolección programada en tu planta.",
-      "Clasificación y confirmación de pesos en un plazo máximo de 24 horas.",
+      "Clasificación y confirmación de pesos de tu material.",
       "Documentación y certificado de disposición.",
     ],
     benefits: [
       "Cumples con tus obligaciones ambientales y de comercio exterior.",
       "Liberas espacio en planta de forma segura y ordenada.",
-      "Transparencia total con pesos confirmados en 24h.",
-      "Tu material no termina en el mercado negro: disposición trazable.",
+      "Transparencia total en pesos y clasificación.",
+      "Disposición segura, trazable y responsable de tu material.",
     ],
     faqs: [
       {
@@ -47,12 +47,8 @@ export const serviceDetails: ServiceDetail[] = [
         a: "Sí. Suministramos los contenedores adecuados al tipo y volumen de tu material, sin costo adicional dentro del servicio de recolección.",
       },
       {
-        q: "¿En cuánto tiempo confirman los pesos?",
-        a: "Confirmamos pesos y clasificación en un plazo no mayor a 24 horas tras la recolección.",
-      },
-      {
         q: "¿Emiten certificado de disposición?",
-        a: "Sí. Entregamos la documentación que protege tu marca y respalda tus auditorías y operación IMMEX.",
+        a: "Sí. Entregamos la documentación que protege tu marca y respalda tus auditorías.",
       },
     ],
   },
@@ -164,14 +160,15 @@ export const serviceDetails: ServiceDetail[] = [
     keyword: "disposición de escoria de soldadura libre de plomo",
     metaTitle: "Disposición de Escorias de Soldadura | MARDOS",
     metaDescription:
-      "Disposición final segura de escorias de soldadura libres de plomo para la industria en Ciudad Juárez. Cumplimiento y trazabilidad. Cotiza.",
+      "Disposición final de escorias de soldadura libres de plomo y gestión de escorias con plomo (residuo peligroso) en Ciudad Juárez. Cotiza.",
     h1: "Disposición de escorias de soldadura libres de plomo",
     intro:
-      "Damos disposición final segura y trazable a las escorias de soldadura libres de plomo generadas por tu operación, con el manejo y la documentación que tu cumplimiento ambiental requiere.",
+      "Damos disposición final segura y trazable a las escorias de soldadura libres de plomo generadas por tu operación, con el manejo y la documentación que tu cumplimiento ambiental requiere. Para las escorias de soldadura con plomo, consideradas residuos peligrosos, te ayudamos con la gestión para su disposición final y su reciclaje.",
     includes: [
       "Recolección de escorias de soldadura en tu planta.",
       "Manejo conforme a normatividad de residuos.",
       "Disposición final segura y trazable.",
+      "Gestión para la disposición final y el reciclaje de escorias con plomo (residuo peligroso).",
       "Documentación de disposición.",
     ],
     benefits: [
@@ -185,8 +182,44 @@ export const serviceDetails: ServiceDetail[] = [
         a: "Sí, nos especializamos en la disposición final segura de escorias de soldadura libres de plomo.",
       },
       {
+        q: "¿Qué pasa con las escorias de soldadura con plomo?",
+        a: "Las escorias con plomo se consideran residuos peligrosos. Te ayudamos con la gestión para su disposición final y su reciclaje.",
+      },
+      {
         q: "¿Entregan documentación de la disposición?",
         a: "Sí, entregamos la documentación que respalda el manejo y disposición de tu material.",
+      },
+    ],
+  },
+  {
+    slug: "comercio-exterior",
+    title: "Gestión en comercio exterior",
+    keyword: "retorno de material importado temporalmente Juárez",
+    metaTitle: "Gestión en Comercio Exterior | MARDOS",
+    metaDescription:
+      "Gestión en comercio exterior con filial en Estados Unidos para el retorno de materiales importados temporalmente. Ciudad Juárez. Cotiza.",
+    h1: "Gestión en comercio exterior",
+    intro:
+      "Gestión en comercio exterior con filial en Estados Unidos para el retorno de materiales importados temporalmente, con la documentación que tu operación y tus auditorías requieren.",
+    includes: [
+      "Gestión del retorno de materiales importados temporalmente.",
+      "Coordinación con nuestra filial en Estados Unidos.",
+      "Recolección y transporte del material.",
+      "Certificado de disposición y documentación de respaldo.",
+    ],
+    benefits: [
+      "Flujo de material ordenado entre ambos lados de la frontera.",
+      "Respaldo documental para tus auditorías.",
+      "Un solo proveedor para reciclaje y comercio exterior.",
+    ],
+    faqs: [
+      {
+        q: "¿Cómo apoyan con los materiales importados temporalmente?",
+        a: "Gestionamos su retorno a través de nuestra filial en Estados Unidos, con la documentación correspondiente.",
+      },
+      {
+        q: "¿Entregan documentación del proceso?",
+        a: "Sí. Entregamos el certificado de disposición y la documentación que respalda tu operación y tus auditorías.",
       },
     ],
   },

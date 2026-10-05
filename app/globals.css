@@ -26,6 +26,47 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a {
-  color: inherit;
+@layer base {
+  a {
+    color: inherit;
+  }
+}
+
+/* Curvas de animación compartidas (ver app/components/hero/easing.ts) */
+:root {
+  --ease-ui-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-ui-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Carrusel del hero */
+.hero-slide {
+  transition:
+    opacity 700ms var(--ease-ui-out),
+    transform 700ms var(--ease-ui-out);
+}
+.hero-slide[data-active="false"] {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+.hero-progress {
+  transform: scaleX(0);
+  animation-name: hero-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hero-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-slide[data-active="false"] {
+    transform: none;
+    transition: opacity 300ms ease;
+  }
 }

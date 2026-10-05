@@ -1,6 +1,6 @@
 # MARDOS Reciclados — Sitio web
 
-Sitio de [MARDOS Reciclados](https://www.mardosreciclados.com), recicladora industrial en Ciudad Juárez (+18 años, operaciones IMMEX, filial en EE.UU.).
+Sitio de [MARDOS Reciclados](https://www.mardosreciclados.com), recicladora industrial en Ciudad Juárez (+18 años, gestión en comercio exterior, filial en EE.UU.).
 
 ## Stack
 
@@ -27,4 +27,4 @@ npm run build    # build de producción
 
 ## Páginas
 
-Home, `/nosotros`, `/servicios` (+5 detalle), `/materiales` (+3 detalle), `/immex`, `/blog`, `/contacto`, `/cotizacion`.
+Home, `/nosotros`, `/servicios` (+6 detalle, incluye comercio exterior; `/immex` redirige ahí), `/materiales` (+3 detalle), `/blog`, `/contacto`, `/cotizacion`.

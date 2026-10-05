@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/nosotros",
     "/servicios",
     "/materiales",
-    "/immex",
     "/blog",
     "/contacto",
     "/cotizacion",

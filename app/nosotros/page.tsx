@@ -5,7 +5,7 @@ import CTABand from "../components/CTABand";
 export const metadata: Metadata = {
   title: "Quiénes Somos | MARDOS Reciclados Cd. Juárez",
   description:
-    "Más de 18 años reciclando para la industria maquiladora en Ciudad Juárez. Filial en EE.UU. y operaciones IMMEX. Conócenos.",
+    "Más de 18 años reciclando para la industria maquiladora en Ciudad Juárez. Filial en EE.UU. y gestión en comercio exterior. Conócenos.",
   alternates: { canonical: "/nosotros" },
 };
 
@@ -18,8 +18,8 @@ export default function NosotrosPage() {
           <h1 className="mt-4 text-4xl font-bold text-ink">Quiénes somos</h1>
           <p className="mt-4 text-lg text-muted">
             Más de 18 años dando soluciones de reciclaje a la industria de
-            Ciudad Juárez y la zona fronteriza, con operaciones IMMEX y filial en
-            Estados Unidos.
+            Ciudad Juárez y la zona fronteriza, con gestión en comercio exterior y
+            filial en Estados Unidos.
           </p>
         </div>
       </section>
@@ -34,9 +34,9 @@ export default function NosotrosPage() {
             manejo especial.
           </p>
           <p>
-            Nuestra experiencia de más de 18 años, sumada a nuestras operaciones
-            IMMEX y a nuestra filial en Estados Unidos, nos permite ofrecer
-            soluciones transfronterizas para el retorno de materiales importados
+            Nuestra experiencia de más de 18 años, sumada a nuestra gestión en
+            comercio exterior y a nuestra filial en Estados Unidos, nos permite
+            ofrecer soluciones para el retorno de materiales importados
             temporalmente, algo crítico para la operación de comercio exterior de
             nuestros clientes.
           </p>
@@ -56,7 +56,7 @@ export default function NosotrosPage() {
             <h2 className="text-xl font-bold text-ink">Por qué MARDOS</h2>
             <ul className="mt-3 space-y-2 text-muted">
               <li>+18 años de experiencia en la industria.</li>
-              <li>Operaciones IMMEX y filial en EE.UU.</li>
+              <li>Gestión en comercio exterior y filial en EE.UU.</li>
               <li>Certificado de destrucción y cumplimiento ambiental.</li>
               <li>Confirmación de pesos en 24 horas.</li>
             </ul>

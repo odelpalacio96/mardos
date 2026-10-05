@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { nav } from "@/lib/site";
@@ -11,11 +12,16 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-md bg-brand font-bold text-white">
-            M
-          </span>
-          <span className="text-lg font-bold tracking-tight text-navy">
-            MARDOS <span className="font-medium text-muted">Reciclados</span>
+          <Image
+            src="/logo-mardos.png"
+            alt="MARDOS"
+            width={640}
+            height={408}
+            priority
+            className="h-12 w-auto"
+          />
+          <span className="text-lg font-medium tracking-tight text-muted">
+            Reciclados
           </span>
         </Link>
 

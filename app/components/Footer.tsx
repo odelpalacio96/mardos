@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site, nav, services } from "@/lib/site";
 
@@ -6,11 +7,14 @@ export default function Footer() {
     <footer className="border-t border-line bg-navy-dark text-white/80">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-md bg-brand font-bold text-white">
-              M
-            </span>
-            <span className="text-lg font-bold text-white">MARDOS</span>
+          <div className="inline-flex rounded-xl bg-white px-4 py-3">
+            <Image
+              src="/logo-mardos.png"
+              alt="MARDOS Reciclados"
+              width={640}
+              height={408}
+              className="h-14 w-auto"
+            />
           </div>
           <p className="mt-4 text-sm leading-relaxed">
             Recicladora industrial en Ciudad Juárez. +18 años dando disposición
