@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import CTABand from "../../components/CTABand";
+import ProcessVideo from "../../components/ProcessVideo";
 import { materialDetails, getMaterial } from "@/lib/materials";
 import { site } from "@/lib/site";
 
@@ -59,31 +60,40 @@ export default async function MaterialPage({
       />
 
       <section className="border-b border-line bg-surface">
-        <div className="mx-auto max-w-4xl px-5 py-12">
-          <Breadcrumbs
-            items={[
-              { label: "Materiales", href: "/materiales" },
-              { label: m.title, href: `/materiales/${m.slug}` },
-            ]}
-          />
-          <h1 className="mt-4 text-4xl font-bold text-ink">{m.h1}</h1>
-          <p className="mt-4 text-lg text-muted">{m.intro}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/cotizacion"
-              className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark"
-            >
-              Cotiza tu material
-            </Link>
-            <a
-              href={`https://wa.me/${site.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-line px-6 py-3 font-semibold text-ink transition-colors hover:border-brand"
-            >
-              WhatsApp directo
-            </a>
+        <div
+          className={
+            m.video
+              ? "mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:grid-cols-[1.1fr_1fr]"
+              : "mx-auto max-w-4xl px-5 py-12"
+          }
+        >
+          <div>
+            <Breadcrumbs
+              items={[
+                { label: "Materiales", href: "/materiales" },
+                { label: m.title, href: `/materiales/${m.slug}` },
+              ]}
+            />
+            <h1 className="mt-4 text-4xl font-bold text-ink">{m.h1}</h1>
+            <p className="mt-4 text-lg text-muted">{m.intro}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/cotizacion"
+                className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark"
+              >
+                Cotiza tu material
+              </Link>
+              <a
+                href={`https://wa.me/${site.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg border border-line px-6 py-3 font-semibold text-ink transition-colors hover:border-brand"
+              >
+                WhatsApp directo
+              </a>
+            </div>
           </div>
+          {m.video && <ProcessVideo {...m.video} />}
         </div>
       </section>
 

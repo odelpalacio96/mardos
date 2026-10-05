@@ -1,4 +1,4 @@
-import type { Faq } from "./services";
+import { chipVideo, type Faq, type PageVideo } from "./services";
 
 export type MaterialDetail = {
   slug: string;
@@ -9,6 +9,7 @@ export type MaterialDetail = {
   intro: string;
   items: string[];
   faqs: Faq[];
+  video?: PageVideo;
 };
 
 export const materialDetails: MaterialDetail[] = [
@@ -80,6 +81,11 @@ export const materialDetails: MaterialDetail[] = [
     metaDescription:
       "Reciclaje y compra de scrap electrónico para la industria en Ciudad Juárez. Manejo responsable y trazable. Cotiza tu material con MARDOS.",
     h1: "Reciclaje de materiales electrónicos",
+    video: {
+      ...chipVideo,
+      caption:
+        "Ensamble de componentes en tablilla electrónica: tarjetas, chips y componentes como estos son parte del scrap que compramos. Imagen ilustrativa.",
+    },
     intro:
       "Compramos y damos disposición responsable a tu scrap y materiales electrónicos, con manejo trazable y la documentación que tu operación requiere.",
     items: [

@@ -1,5 +1,12 @@
 export type Faq = { q: string; a: string };
 
+export type PageVideo = { src: string; poster: string; caption: string };
+
+export const chipVideo = {
+  src: "/videos/chip-tablilla.mp4",
+  poster: "/videos/chip-tablilla-poster.webp",
+};
+
 export type ServiceDetail = {
   slug: string;
   title: string;
@@ -11,6 +18,7 @@ export type ServiceDetail = {
   includes: string[];
   benefits: string[];
   faqs: Faq[];
+  video?: PageVideo;
 };
 
 export const serviceDetails: ServiceDetail[] = [
@@ -162,6 +170,11 @@ export const serviceDetails: ServiceDetail[] = [
     metaDescription:
       "Disposición final de escorias de soldadura libres de plomo y gestión de escorias con plomo (residuo peligroso) en Ciudad Juárez. Cotiza.",
     h1: "Disposición de escorias de soldadura libres de plomo",
+    video: {
+      ...chipVideo,
+      caption:
+        "Ensamble y soldadura de componentes electrónicos: de este proceso provienen las escorias que reciclamos. Imagen ilustrativa.",
+    },
     intro:
       "Damos disposición final segura y trazable a las escorias de soldadura libres de plomo generadas por tu operación, con el manejo y la documentación que tu cumplimiento ambiental requiere. Para las escorias de soldadura con plomo, consideradas residuos peligrosos, te ayudamos con la gestión para su disposición final y su reciclaje.",
     includes: [

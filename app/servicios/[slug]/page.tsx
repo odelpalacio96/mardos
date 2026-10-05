@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import CTABand from "../../components/CTABand";
+import ProcessVideo from "../../components/ProcessVideo";
 import { serviceDetails, getService } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -66,21 +67,30 @@ export default async function ServicioPage({
       />
 
       <section className="border-b border-line bg-surface">
-        <div className="mx-auto max-w-4xl px-5 py-12">
-          <Breadcrumbs
-            items={[
-              { label: "Servicios", href: "/servicios" },
-              { label: s.title, href: `/servicios/${s.slug}` },
-            ]}
-          />
-          <h1 className="mt-4 text-4xl font-bold text-ink">{s.h1}</h1>
-          <p className="mt-4 text-lg text-muted">{s.intro}</p>
-          <Link
-            href="/cotizacion"
-            className="mt-6 inline-block rounded-lg bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark"
-          >
-            Solicitar cotización
-          </Link>
+        <div
+          className={
+            s.video
+              ? "mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:grid-cols-[1.1fr_1fr]"
+              : "mx-auto max-w-4xl px-5 py-12"
+          }
+        >
+          <div>
+            <Breadcrumbs
+              items={[
+                { label: "Servicios", href: "/servicios" },
+                { label: s.title, href: `/servicios/${s.slug}` },
+              ]}
+            />
+            <h1 className="mt-4 text-4xl font-bold text-ink">{s.h1}</h1>
+            <p className="mt-4 text-lg text-muted">{s.intro}</p>
+            <Link
+              href="/cotizacion"
+              className="mt-6 inline-block rounded-lg bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark"
+            >
+              Solicitar cotización
+            </Link>
+          </div>
+          {s.video && <ProcessVideo {...s.video} />}
         </div>
       </section>
 
