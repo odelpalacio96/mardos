@@ -7,6 +7,7 @@ import CTABand from "../../components/CTABand";
 import ProcessVideo from "../../components/ProcessVideo";
 import { serviceDetails, getService } from "@/lib/services";
 import { site } from "@/lib/site";
+import { btn } from "@/lib/ui";
 
 export function generateStaticParams() {
   return serviceDetails.map((s) => ({ slug: s.slug }));
@@ -86,7 +87,7 @@ export default async function ServicioPage({
             <p className="mt-4 text-lg text-muted">{s.intro}</p>
             <Link
               href="/cotizacion"
-              className="mt-6 inline-block rounded-lg bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark"
+              className={`mt-6 ${btn.primary()}`}
             >
               Solicitar cotización
             </Link>

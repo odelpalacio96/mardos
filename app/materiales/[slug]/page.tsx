@@ -6,6 +6,7 @@ import CTABand from "../../components/CTABand";
 import ProcessVideo from "../../components/ProcessVideo";
 import { materialDetails, getMaterial } from "@/lib/materials";
 import { site } from "@/lib/site";
+import { btn } from "@/lib/ui";
 
 export function generateStaticParams() {
   return materialDetails.map((m) => ({ slug: m.slug }));
@@ -79,7 +80,7 @@ export default async function MaterialPage({
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/cotizacion"
-                className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark"
+                className={btn.primary()}
               >
                 Cotiza tu material
               </Link>
@@ -87,7 +88,7 @@ export default async function MaterialPage({
                 href={`https://wa.me/${site.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg border border-line px-6 py-3 font-semibold text-ink transition-colors hover:border-brand"
+                className={btn.outline()}
               >
                 WhatsApp directo
               </a>
@@ -103,7 +104,7 @@ export default async function MaterialPage({
           {m.items.map((i) => (
             <div
               key={i}
-              className="rounded-xl border border-line bg-white px-5 py-4 font-medium text-ink"
+              className="rounded-xl border border-line bg-card px-5 py-4 font-medium text-ink"
             >
               {i}
             </div>
@@ -116,8 +117,8 @@ export default async function MaterialPage({
           <h2 className="text-2xl font-bold text-ink">Cómo funciona la venta</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {sellSteps.map((s) => (
-              <div key={s.n} className="rounded-xl border border-line bg-white p-6">
-                <div className="grid h-10 w-10 place-items-center rounded-full bg-brand font-bold text-white">
+              <div key={s.n} className="rounded-xl border border-line bg-card p-6">
+                <div className="grid h-10 w-10 place-items-center rounded-full bg-brand-solid font-bold text-white">
                   {s.n}
                 </div>
                 <p className="mt-4 text-sm text-muted">{s.text}</p>

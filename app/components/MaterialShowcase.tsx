@@ -5,9 +5,9 @@ export default function MaterialShowcase({ items }: { items: ShowcaseItem[] }) {
   return (
     <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
       {items.map((item) => (
-        <figure key={item.title} className="overflow-hidden rounded-2xl border border-line bg-white">
+        <figure key={item.title} className="overflow-hidden rounded-2xl border border-line bg-card">
           {item.kind === "cutout" ? (
-            <div className="relative aspect-[4/3] bg-gradient-to-b from-surface to-[#eaefeb]">
+            <div className="relative aspect-[4/3] bg-gradient-to-b from-surface to-surface-2">
               <div className="absolute inset-x-[24%] bottom-[8%] h-4 rounded-[50%] bg-black/25 blur-md" />
               <Image
                 src={item.image.src}

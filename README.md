@@ -28,3 +28,21 @@ npm run build    # build de producción
 ## Páginas
 
 Home, `/nosotros`, `/servicios` (+6 detalle, incluye comercio exterior; `/immex` redirige ahí), `/materiales` (+3 detalle), `/blog`, `/contacto`, `/cotizacion`.
+
+## Formulario de contacto y cotización
+
+Las solicitudes se envían desde `app/api/contacto/route.ts` con [Resend](https://resend.com). Configura en Vercel (Settings → Environment Variables):
+
+| Variable | Uso |
+| --- | --- |
+| `RESEND_API_KEY` | Clave de la API de Resend. Sin ella, el formulario abre el correo del visitante como respaldo. |
+| `CONTACT_TO_EMAIL` | Correos que reciben las solicitudes, separados por coma (por defecto, el de `lib/site.ts`). |
+| `CONTACT_FROM_EMAIL` | Remitente con el dominio verificado en Resend, p. ej. `MARDOS <web@mardosreciclados.com>`. |
+
+## Respaldo
+
+Antes del rediseño con principios de Apple se creó la etiqueta `respaldo-antes-rediseno-apple`. Para ver o restaurar esa versión:
+
+```bash
+git checkout respaldo-antes-rediseno-apple
+```

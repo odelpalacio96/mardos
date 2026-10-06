@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import WaveSolderAnimation from "./WaveSolderAnimation";
+import { btn } from "@/lib/ui";
 
 const ChipScene = dynamic(() => import("./ChipScene"), { ssr: false });
 
@@ -61,10 +62,124 @@ export default function HeroCarousel() {
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const reducedMotion = useReducedMotion();
-  const swipeStart = useRef<number | null>(null);
+  const [dragging, setDragging] = useState(false);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const drag = useRef<{
+    id: number;
+    x0: number;
+    y0: number;
+    dx: number;
+    axis: "x" | "y" | null;
+    samples: { x: number; t: number }[];
+    moved: boolean;
+  } | null>(null);
 
-  const paused = hovered || focused;
+  const paused = hovered || focused || dragging;
   const go = useCallback((i: number) => setIndex((i + SLIDES.length) % SLIDES.length), []);
+
+  // Cambia de diapositiva saliendo hacia el lado del gesto y entrando por el opuesto.
+  const commit = (dir: 1 | -1) => {
+    if (reducedMotion) {
+      go(index + dir);
+      return;
+    }
+    const from = slideRefs.current[index];
+    const to = slideRefs.current[(index + dir + SLIDES.length) % SLIDES.length];
+    if (from) {
+      from.style.transition = "";
+      from.style.transform = `translateX(${dir * -24}%)`;
+      from.style.opacity = "0";
+      setTimeout(() => {
+        from.style.transform = "";
+        from.style.opacity = "";
+      }, 720);
+    }
+    if (to) {
+      to.style.transition = "none";
+      to.style.transform = `translateX(${dir * 24}%)`;
+      void to.offsetWidth; // fija la posición inicial antes de animar
+      to.style.transition = "";
+      to.style.transform = "";
+    }
+    go(index + dir);
+  };
+
+  // Manipulación directa en pantallas táctiles: la diapositiva sigue al dedo 1:1
+  // y, al soltar, se proyecta la inercia para decidir si cambia.
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === "mouse") return;
+    drag.current = { id: e.pointerId, x0: e.clientX, y0: e.clientY, dx: 0, axis: null, samples: [{ x: e.clientX, t: e.timeStamp }], moved: false };
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    const d = drag.current;
+    if (!d || d.id !== e.pointerId) return;
+    const dx = e.clientX - d.x0;
+    const dy = e.clientY - d.y0;
+    if (!d.axis) {
+      if (Math.hypot(dx, dy) < 10) return; // histéresis antes de decidir dirección
+      d.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      if (d.axis === "y") {
+        drag.current = null; // es scroll vertical: se lo dejamos al navegador
+        return;
+      }
+      try {
+        stageRef.current?.setPointerCapture(e.pointerId);
+      } catch {
+        // Algunos navegadores no permiten capturar este puntero; el arrastre sigue igual.
+      }
+      setDragging(true);
+    }
+    d.dx = dx;
+    d.moved = true;
+    d.samples.push({ x: e.clientX, t: e.timeStamp });
+    if (d.samples.length > 6) d.samples.shift();
+    if (reducedMotion) return;
+    const el = slideRefs.current[index];
+    const w = stageRef.current?.clientWidth || 1;
+    if (el) {
+      el.style.transition = "none";
+      el.style.transform = `translateX(${dx}px)`;
+      el.style.opacity = String(1 - Math.min(Math.abs(dx) / w, 1) * 0.6);
+    }
+  };
+
+  const onPointerEnd = (e: React.PointerEvent) => {
+    const d = drag.current;
+    if (!d || d.id !== e.pointerId) return;
+    drag.current = null;
+    setDragging(false);
+    if (d.axis !== "x") return;
+    const first = d.samples[0];
+    const last = d.samples[d.samples.length - 1];
+    // Si el dedo se detuvo antes de soltar, no hay inercia.
+    const stale = e.timeStamp - last.t > 100;
+    const v = stale ? 0 : ((last.x - first.x) / Math.max(last.t - first.t, 1)) * 1000; // px/s
+    const decel = 0.998;
+    const projected = d.dx + ((v / 1000) * decel) / (1 - decel);
+    const w = stageRef.current?.clientWidth || 1;
+    if (Math.abs(projected) > w * 0.3) {
+      commit(projected < 0 ? 1 : -1);
+    } else {
+      const el = slideRefs.current[index];
+      if (el) {
+        el.style.transition = "transform 320ms var(--ease-ui-out), opacity 320ms var(--ease-ui-out)";
+        el.style.transform = "";
+        el.style.opacity = "";
+        setTimeout(() => (el.style.transition = ""), 340);
+      }
+    }
+    if (d.moved) {
+      // Evita que soltar sobre un botón active el enlace.
+      const block = (ev: MouseEvent) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+      };
+      window.addEventListener("click", block, { capture: true, once: true });
+      setTimeout(() => window.removeEventListener("click", block, { capture: true }), 50);
+    }
+  };
 
   return (
     <div
@@ -78,23 +193,24 @@ export default function HeroCarousel() {
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false);
       }}
-      onPointerDown={(e) => {
-        if (e.pointerType !== "mouse") swipeStart.current = e.clientX;
-      }}
-      onPointerUp={(e) => {
-        if (swipeStart.current === null) return;
-        const dx = e.clientX - swipeStart.current;
-        swipeStart.current = null;
-        if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
-      }}
     >
-      <div className="grid">
+      <div
+        ref={stageRef}
+        className="grid touch-pan-y"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerEnd}
+        onPointerCancel={onPointerEnd}
+      >
         {SLIDES.map((s, i) => {
           const active = i === index;
           const Heading = i === 0 ? "h1" : "h2";
           return (
             <div
               key={s.id}
+              ref={(el) => {
+                slideRefs.current[i] = el;
+              }}
               role="group"
               aria-roledescription="diapositiva"
               aria-label={`${i + 1} de ${SLIDES.length}: ${s.label}`}
@@ -107,20 +223,20 @@ export default function HeroCarousel() {
                 <p className="text-sm font-semibold uppercase tracking-wide text-brand-light">
                   {s.eyebrow}
                 </p>
-                <Heading className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-white md:text-5xl">
+                <Heading className="mt-4 max-w-3xl text-4xl font-bold text-white md:text-5xl">
                   {s.title}
                 </Heading>
                 <p className="mt-6 max-w-2xl text-lg text-white/85">{s.text}</p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href={s.primary.href}
-                    className="rounded-lg bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-light"
+                    className={btn.primary()}
                   >
                     {s.primary.label}
                   </Link>
                   <Link
                     href={s.secondary.href}
-                    className="rounded-lg border border-white/40 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+                    className={btn.outlineLight()}
                   >
                     {s.secondary.label}
                   </Link>

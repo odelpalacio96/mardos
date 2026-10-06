@@ -37,9 +37,9 @@ export default function BlogPage() {
       <section className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {upcoming.map((a) => (
-            <div key={a.title} className="rounded-2xl border border-line bg-white p-7">
+            <div key={a.title} className="rounded-2xl border border-line bg-card p-7">
               <div className="flex items-center gap-2">
-                <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand-dark">
+                <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">
                   {a.cat}
                 </span>
                 <span className="text-xs text-muted">Próximamente</span>

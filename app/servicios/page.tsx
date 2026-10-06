@@ -34,7 +34,7 @@ export default function ServiciosPage() {
             <Link
               key={s.slug}
               href={`/servicios/${s.slug}`}
-              className="group rounded-2xl border border-line bg-white p-8 transition-colors hover:border-brand"
+              className="group rounded-2xl border border-line bg-card p-8 transition-colors hover:border-brand"
             >
               <h2 className="text-xl font-bold text-ink group-hover:text-brand">
                 {s.title}

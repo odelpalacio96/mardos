@@ -31,7 +31,7 @@ export default function MaterialesPage() {
             {materials.map((m) => (
               <span
                 key={m}
-                className="rounded-full border border-line bg-white px-4 py-2 text-sm text-ink"
+                className="rounded-full border border-line bg-card px-4 py-2 text-sm text-ink"
               >
                 {m}
               </span>
@@ -46,7 +46,7 @@ export default function MaterialesPage() {
             <Link
               key={m.slug}
               href={`/materiales/${m.slug}`}
-              className="group rounded-2xl border border-line bg-white p-8 transition-colors hover:border-brand"
+              className="group rounded-2xl border border-line bg-card p-8 transition-colors hover:border-brand"
             >
               <h2 className="text-xl font-bold text-ink group-hover:text-brand">
                 {m.title}

@@ -4,7 +4,7 @@ import { site, nav, services } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-navy-dark text-white/80">
+    <footer id="site-footer" className="on-dark border-t border-line bg-navy-dark text-white/80">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-4">
         <div>
           <div className="inline-flex rounded-xl bg-white px-4 py-3">

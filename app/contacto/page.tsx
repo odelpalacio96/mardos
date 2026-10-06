@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Breadcrumbs from "../components/Breadcrumbs";
 import LeadForm from "../components/LeadForm";
 import { site } from "@/lib/site";
+import { btn } from "@/lib/ui";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -21,7 +22,7 @@ export default function ContactoPage() {
       </p>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_360px]">
-        <div className="rounded-2xl border border-line bg-white p-8">
+        <div className="rounded-2xl border border-line bg-card p-8">
           <LeadForm variant="contacto" />
         </div>
 
@@ -43,7 +44,7 @@ export default function ContactoPage() {
               href={`https://wa.me/${site.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-block rounded-lg bg-[#25D366] px-5 py-2.5 font-semibold text-white"
+              className={`mt-5 ${btn.whatsapp("sm")}`}
             >
               Escríbenos por WhatsApp
             </a>

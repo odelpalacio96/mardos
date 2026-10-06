@@ -20,7 +20,7 @@ export default function CotizacionPage() {
         una cotización justa, sin compromiso y con respuesta rápida.
       </p>
 
-      <div className="mt-10 rounded-2xl border border-line bg-white p-8">
+      <div className="mt-10 rounded-2xl border border-line bg-card p-8">
         <LeadForm variant="cotizacion" />
       </div>
 
