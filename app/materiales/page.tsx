@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Breadcrumbs from "../components/Breadcrumbs";
 import CTABand from "../components/CTABand";
+import MaterialesHero from "../components/MaterialesHero";
 import MaterialShowcase from "../components/MaterialShowcase";
 import { materialDetails } from "@/lib/materials";
-import { materials } from "@/lib/site";
 import { solderShowcase } from "@/lib/showcase";
 
 export const metadata: Metadata = {
@@ -17,28 +16,7 @@ export const metadata: Metadata = {
 export default function MaterialesPage() {
   return (
     <>
-      <section className="border-b border-line bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-12">
-          <Breadcrumbs items={[{ label: "Materiales", href: "/materiales" }]} />
-          <h1 className="mt-4 text-4xl font-bold text-ink">
-            Materiales que compramos
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted">
-            Tu scrap vale. Compramos los materiales reciclables de tu empresa con
-            cotización justa, pago confiable y recolección en tu planta.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {materials.map((m) => (
-              <span
-                key={m}
-                className="rounded-full border border-line bg-card px-4 py-2 text-sm text-ink"
-              >
-                {m}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      <MaterialesHero />
 
       <section className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid gap-6 md:grid-cols-3">

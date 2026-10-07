@@ -217,3 +217,29 @@ body {
   transform: translateY(16px);
   pointer-events: none;
 }
+
+/* Encabezado de Materiales: fundido cruzado entre fotos. */
+.material-bg {
+  opacity: 0;
+  transition: opacity 450ms ease;
+}
+.material-bg[data-visible="true"] {
+  opacity: 1;
+}
+.material-cta {
+  animation: material-cta-in 200ms var(--ease-ui-out);
+}
+@keyframes material-cta-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .material-bg {
+    transition-duration: 150ms;
+  }
+  .material-cta {
+    animation: none;
+  }
+}

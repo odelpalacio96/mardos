@@ -3,7 +3,15 @@ import { site } from "@/lib/site";
 
 export type Crumb = { label: string; href: string };
 
-export default function Breadcrumbs({ items }: { items: Crumb[] }) {
+export default function Breadcrumbs({
+  items,
+  tone = "default",
+}: {
+  items: Crumb[];
+  /** "light" para usar sobre fondos oscuros o fotos. */
+  tone?: "default" | "light";
+}) {
+  const light = tone === "light";
   const all: Crumb[] = [{ label: "Inicio", href: "/" }, ...items];
 
   const schema = {
@@ -18,7 +26,7 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   };
 
   return (
-    <nav aria-label="Ruta de navegación" className="text-sm text-muted">
+    <nav aria-label="Ruta de navegación" className={`text-sm ${light ? "text-white/70" : "text-muted"}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -28,13 +36,13 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
           <li key={c.href} className="flex items-center gap-1.5">
             {i < all.length - 1 ? (
               <>
-                <Link href={c.href} className="hover:text-brand">
+                <Link href={c.href} className={light ? "hover:text-white" : "hover:text-brand"}>
                   {c.label}
                 </Link>
-                <span className="text-line">/</span>
+                <span className={light ? "text-white/35" : "text-line"}>/</span>
               </>
             ) : (
-              <span className="font-medium text-ink">{c.label}</span>
+              <span className={`font-medium ${light ? "text-white" : "text-ink"}`}>{c.label}</span>
             )}
           </li>
         ))}
