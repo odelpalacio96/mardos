@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "../components/Breadcrumbs";
 import CTABand from "../components/CTABand";
+import { IconArrowRight } from "../components/icons";
 import { serviceDetails } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -34,15 +36,27 @@ export default function ServiciosPage() {
             <Link
               key={s.slug}
               href={`/servicios/${s.slug}`}
-              className="group rounded-2xl border border-line bg-card p-8 transition-colors hover:border-brand"
+              className="group flex flex-col rounded-2xl border border-line bg-card p-8 transition-[border-color,scale] duration-150 hover:border-brand active:scale-[0.99]"
             >
               <h2 className="text-xl font-bold text-ink group-hover:text-brand">
                 {s.title}
               </h2>
               <p className="mt-3 text-muted">{s.intro}</p>
-              <span className="mt-5 inline-block font-semibold text-brand">
-                Ver detalle →
-              </span>
+              {/* Pie de la tarjeta: enlace a la izquierda, ilustración a la derecha. */}
+              <div className="mt-auto flex items-end justify-between gap-6 pt-6">
+                <span className="inline-flex items-center gap-2 font-semibold text-brand">
+                  Ver detalle
+                  <IconArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </span>
+                <Image
+                  src={s.icon.src}
+                  alt=""
+                  width={s.icon.width}
+                  height={s.icon.height}
+                  sizes="120px"
+                  className="h-20 w-auto max-w-[45%] object-contain transition-transform duration-300 ease-out group-hover:-translate-y-0.5 sm:h-24"
+                />
+              </div>
             </Link>
           ))}
         </div>

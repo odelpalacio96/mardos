@@ -22,11 +22,14 @@ export type ServiceDetail = {
   faqs: Faq[];
   video?: PageVideo;
   gallery?: { title: string; images: ShowcaseImage[] };
+  /** Ilustración de línea del servicio (public/servicios/iconos). */
+  icon: { src: string; width: number; height: number };
 };
 
 export const serviceDetails: ServiceDetail[] = [
   {
     slug: "recoleccion-scrap",
+    icon: { src: "/servicios/iconos/recoleccion-scrap.webp", width: 360, height: 346 },
     title: "Recolección de scrap",
     keyword: "recolección de scrap industrial maquila",
     metaTitle: "Recolección de Scrap Industrial en Cd. Juárez | MARDOS",
@@ -65,6 +68,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "destruccion-archivo-muerto",
+    icon: { src: "/servicios/iconos/destruccion-archivo-muerto.webp", width: 360, height: 356 },
     title: "Destrucción de archivo muerto",
     keyword: "destrucción de archivo muerto certificada Juárez",
     metaTitle: "Destrucción de Archivo Muerto Certificada | MARDOS",
@@ -102,6 +106,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "maquinaria-obsoleta",
+    icon: { src: "/servicios/iconos/maquinaria-obsoleta.webp", width: 360, height: 239 },
     title: "Compra y retiro de maquinaria obsoleta",
     keyword: "compra de maquinaria obsoleta Juárez",
     metaTitle: "Compra y Retiro de Maquinaria Obsoleta | MARDOS",
@@ -135,6 +140,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "contenedores-transporte",
+    icon: { src: "/servicios/iconos/contenedores-transporte.webp", width: 360, height: 220 },
     title: "Contenedores y transporte",
     keyword: "contenedores y transporte de scrap Juárez",
     metaTitle: "Contenedores y Transporte de Material | MARDOS",
@@ -167,6 +173,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "escorias-soldadura",
+    icon: { src: "/servicios/iconos/escorias-soldadura.webp", width: 360, height: 164 },
     title: "Escorias de soldadura libres de plomo",
     keyword: "disposición de escoria de soldadura libre de plomo",
     metaTitle: "Disposición de Escorias de Soldadura | MARDOS",
@@ -210,6 +217,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "comercio-exterior",
+    icon: { src: "/servicios/iconos/comercio-exterior.webp", width: 360, height: 349 },
     title: "Gestión en comercio exterior",
     keyword: "retorno de material importado temporalmente Juárez",
     metaTitle: "Gestión en Comercio Exterior | MARDOS",
