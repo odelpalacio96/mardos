@@ -36,7 +36,7 @@ const orgSchema = {
   name: site.legalName,
   alternateName: site.name,
   url: site.domain,
-  email: site.email,
+  email: site.emails,
   telephone: site.phones,
   address: {
     "@type": "PostalAddress",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "../components/Breadcrumbs";
 import LeadForm from "../components/LeadForm";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { btn } from "@/lib/ui";
 
 export const metadata: Metadata = {
@@ -36,12 +36,14 @@ export default function ContactoPage() {
                   <a className="hover:text-brand" href={`tel:${p.replace(/\s/g, "")}`}>{p}</a>
                 </li>
               ))}
-              <li>
-                <a className="hover:text-brand" href={`mailto:${site.email}`}>{site.email}</a>
-              </li>
+              {site.emails.map((e) => (
+                <li key={e}>
+                  <a className="break-all hover:text-brand" href={`mailto:${e}`}>{e}</a>
+                </li>
+              ))}
             </ul>
             <a
-              href={`https://wa.me/${site.whatsapp}`}
+              href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               className={`mt-5 ${btn.whatsapp("sm")}`}

@@ -59,11 +59,13 @@ export default function Footer() {
                 </a>
               </li>
             ))}
-            <li>
-              <a href={`mailto:${site.email}`} className="hover:text-brand-light">
-                {site.email}
-              </a>
-            </li>
+            {site.emails.map((e) => (
+              <li key={e}>
+                <a href={`mailto:${e}`} className="break-all hover:text-brand-light">
+                  {e}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

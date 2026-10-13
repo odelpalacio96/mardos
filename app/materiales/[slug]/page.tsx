@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import CTABand from "../../components/CTABand";
 import ProcessVideo from "../../components/ProcessVideo";
 import { materialDetails, getMaterial } from "@/lib/materials";
-import { site } from "@/lib/site";
+import { whatsappLink } from "@/lib/site";
 import { btn } from "@/lib/ui";
 
 export function generateStaticParams() {
@@ -85,7 +85,7 @@ export default async function MaterialPage({
                 Cotiza tu material
               </Link>
               <a
-                href={`https://wa.me/${site.whatsapp}`}
+                href={whatsappLink(`Hola, vengo del sitio web de MARDOS. Me interesa vender ${m.title.replace(/^Reciclaje de /i, "").toLowerCase()} de mi empresa y quisiera recibir una cotización.`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={btn.outline()}

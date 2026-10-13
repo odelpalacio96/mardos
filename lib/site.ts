@@ -12,10 +12,12 @@ export const site = {
     country: "MX",
     full: "Calle Quiches No. 6735, Col. Azteca, Cd. Juárez, Chih.",
   },
-  phones: ["656 887 2362", "656 305 4878"],
-  // WhatsApp oficial pendiente de confirmar — provisional con el primer teléfono.
-  whatsapp: "5216568872362",
+  phones: ["+52 656 305 4878", "+52 656 598 0746"],
+  // WhatsApp de Uriel (formato internacional sin "+", espacios ni guiones).
+  whatsapp: "526565980746",
+  // Correo principal (schema, respaldo del formulario) y lista que se muestra en el sitio.
   email: "fmarmolejo@mardosreciclados.com",
+  emails: ["fmarmolejo@mardosreciclados.com", "urivas@mardosreciclados.com"],
   social: {
     facebook: "",
     instagram: "",
@@ -75,3 +77,12 @@ export const materials = [
   "Magnesio",
   "Materiales electrónicos",
 ] as const;
+
+/** Mensaje que llega escrito en WhatsApp: el visitante solo toca "Enviar". */
+export const whatsappMessage =
+  "Hola, vengo del sitio web de MARDOS. Me interesa reciclar material de mi empresa y quisiera recibir una cotización.";
+
+/** Enlace a WhatsApp con el mensaje ya escrito. */
+export function whatsappLink(message: string = whatsappMessage) {
+  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
+}

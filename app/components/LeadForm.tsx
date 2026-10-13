@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { btn } from "@/lib/ui";
 
 type Props = { variant: "contacto" | "cotizacion" };
@@ -116,7 +116,7 @@ export default function LeadForm({ variant }: Props) {
           .
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className={btn.whatsapp()}>
+          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className={btn.whatsapp()}>
             WhatsApp
           </a>
           <button type="button" onClick={() => setStatus("idle")} className={btn.outline()}>
@@ -204,7 +204,7 @@ export default function LeadForm({ variant }: Props) {
       {status === "error" && (
         <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
           No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por{" "}
-          <a className="font-semibold underline" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer">
+          <a className="font-semibold underline" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
             WhatsApp
           </a>
           .

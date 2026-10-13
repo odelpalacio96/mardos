@@ -53,7 +53,7 @@ const localBusinessSchema = {
   name: site.legalName,
   image: `${site.domain}/og.jpg`,
   url: site.domain,
-  email: site.email,
+  email: site.emails,
   telephone: site.phones,
   address: {
     "@type": "PostalAddress",

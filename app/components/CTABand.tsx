@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { whatsappLink } from "@/lib/site";
 import { btn } from "@/lib/ui";
 
 type Props = {
@@ -26,7 +26,7 @@ export default function CTABand({
             Solicitar cotización
           </Link>
           <a
-            href={`https://wa.me/${site.whatsapp}`}
+            href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
             className={btn.outlineLight()}

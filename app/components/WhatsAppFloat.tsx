@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { site } from "@/lib/site";
+import { whatsappLink } from "@/lib/site";
 
 export default function WhatsAppFloat() {
   // Se retira cuando el pie está a la vista para no tapar su contenido.
@@ -19,7 +19,7 @@ export default function WhatsAppFloat() {
 
   return (
     <a
-      href={`https://wa.me/${site.whatsapp}`}
+      href={whatsappLink()}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
